@@ -8,7 +8,6 @@ from mininet.cli import CLI
 
 def run():
   net = Mininet(autoSetMacs=True, cleanup=True)
-  
   # Create the network switches
   s1, s2, s3 = [net.addSwitch(s) for s in 's1', 's2', 's3']
   
@@ -31,9 +30,8 @@ def run():
   # Start each switch and assign it to the remote controller
   for s in [s1, s2, s3]:
     s.start([c1])
-  net.staticArp()
   net.start()
-  
+  net.staticArp()
   CLI(net)
 
 if __name__ == '__main__':
